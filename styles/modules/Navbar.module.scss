@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.Navbar{
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  //padding: 0 1rem;
+  border-bottom: 1px solid $darken;
+  z-index: 3;
+  background: $primary-2;
+
+  > ul{
+    display: flex;    
+
+    a{
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      height: $navbar-height;
+
+      &:hover{
+        color: $accent-1
+      }
+    }
+  }
+}

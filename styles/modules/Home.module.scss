@@ -1,0 +1,32 @@
+@import '../variables.scss';
+
+.headlines{
+  padding: 2rem 0;
+
+  h1{
+    font-size: 4rem;
+  }
+
+  h2{
+    font-size: 2rem;
+  }
+
+  h3{
+    font-size: 1.5rem;
+  }
+}
+
+.section_1{
+  margin-top: 4rem;
+  padding: 1rem 0;
+  height: 450px;
+  background: $secondary-1;
+  color: $primary-1;
+
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    
+  }
+}

@@ -1,0 +1,91 @@
+@import './variables.scss';
+@import './basic.scss';
+@import './forms';
+
+html{
+  font-family: $font-primary, $fonts-basic;
+  font-size: $font-size;
+}
+
+#root{
+  height: 100vh;
+  background: $primary-2;
+}
+
+main{
+  z-index: 2;
+}
+
+.orange{
+  background-color: $orange !important;
+}
+.blue{
+  background-color: $blue !important;
+}
+.pink{
+  background-color: $pink !important;
+}
+.green{
+  background-color: $green !important;
+}
+
+.icon{
+  font-size: 2rem;
+  user-select: none;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.text-center{
+  text-align: center;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    padding: 1rem 0;
+  }
+}
+
+.headline{
+  font-family: $font-headlines;
+}
+
+.link{
+  text-decoration: underline;
+  color: $accent-1;
+
+  &:visited{
+    color: $accent-2;
+  }
+
+  &:hover{
+    color: $primary-1;
+  }
+}
+
+footer{
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,34 @@
+export class Vector2{
+  constructor(_x, _y){
+    this.x = _x;
+    this.y = _y;
+  }
+
+  add = (v2) => {
+    this.x += v2.x
+    this.y += v2.y
+  }
+
+  multiplyByScalar = (num) => {
+    this.x *= num
+    this.y *= num
+  }
+
+  normalize = () => {
+    const len = this.getLength()
+    this.x /= len
+    this.y /= len
+  }
+
+  getDistance = (v2) => {
+    return Math.sqrt((v2.x - this.x)*(v2.x - this.x) + (v2.y - this.y)*(v2.y - this.y))
+  }
+
+  getDirectionalVector = (v2) => {
+    return new Vector2(v2.x - this.x, v2.y - this.y)
+  }
+
+  getLength = () => {
+    return Math.sqrt(this.x * this.x + this.y * this.y)
+  }
+}
