@@ -1,4 +1,4 @@
-# This project is a work in progress
+# Work In Progress
 
 ## Check it out: https://simple-notes.vercel.app
 
