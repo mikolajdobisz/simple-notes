@@ -11,13 +11,14 @@ const Noteboards = ({noteboard_id}) => {
   const [currentNoteboard, setCurrentNoteboard] = useState(null);
 
   useEffect(() => {
-    console.log(noteboard_id)
     getNodeBoards();
   }, [])
 
   useEffect(() => {
-    const current = noteboards.find(el => el.id === noteboard_id);
-    setCurrentNoteboard(current);
+    if(noteboard_id){
+      const current = noteboards.find(el => el.id === noteboard_id);
+      setCurrentNoteboard(current);
+    }
   }, [noteboards])
 
   const getNodeBoards = () => {

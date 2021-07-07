@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Circle from '../scripts/Circle'
 import { getRandomFloat, getRandomGray, getRandomInt } from '../scripts/RandomNumber'
 import { Vector2 } from '../scripts/Vector2'
@@ -58,7 +58,7 @@ const BackgroundCanvas = () => {
     return () => {
       window.cancelAnimationFrame(animationFrameId)
     }
-  }, [draw])
+  }, [])
 
   return <canvas className={styles.BackgroundCanvas} ref={canvasRef}/>
 }

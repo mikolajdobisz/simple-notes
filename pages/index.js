@@ -36,7 +36,7 @@ export default function Home() {
           </div>
           <div className={styles.right}>
             <h2 className="headline">
-              YOU DON'T NEED AN ACCOUNT
+              YOU DO NOT NEED AN ACCOUNT
             </h2>
             <p>
               No need for logging in to try it out. 
