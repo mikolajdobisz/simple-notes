@@ -5,31 +5,28 @@ import { Vector2 } from '../scripts/Vector2'
 import styles from '../styles/modules/BackgroundCanvas.module.scss'
 import settings from '../scripts/settings.json'
 
+const mousePosition = new Vector2(null, null)
+const windowOnMouseMove = e => {
+  mousePosition.x = e.clientX
+  mousePosition.y = e.clientY
+}
+const autoResize = (ctx) => {
+  ctx.canvas.width = window.innerWidth
+  ctx.canvas.height = window.innerHeight
+}
+const draw = (ctx, circles, mousePosition) => {
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  circles.forEach(el => {
+    el.update(mousePosition)
+  })
+  circles.forEach(el => {
+    el.draw(ctx)
+  })
+}
+
 const BackgroundCanvas = () => {
 
   const canvasRef = useRef(null)
-  const mousePosition = new Vector2(null, null)
-
-  const draw = (ctx, circles, mousePosition) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    circles.forEach(el => {
-      el.update(mousePosition)
-    })
-    circles.forEach(el => {
-      el.draw(ctx)
-    })
-  }
-
-  const autoResize = (ctx) => {
-    ctx.canvas.width = window.innerWidth
-    ctx.canvas.height = window.innerHeight
-  }
-
-  const windowOnMouseMove = e => {
-    mousePosition.x = e.clientX
-    mousePosition.y = e.clientY
-  }
-
   useEffect(() => {
     const c = canvasRef.current
     const ctx = c.getContext('2d')
