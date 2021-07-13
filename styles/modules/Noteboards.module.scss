@@ -1,11 +1,10 @@
 @import '../variables.scss';
 
 .noteboards{
-  height: calc(100vh - #{$navbar-height}) !important;
-  overflow-y: scroll;
   display: grid;
-  grid-template-columns: 340px 1fr;
-  grid-template-rows: 1fr  2 * $navbar-height;
+  grid-template-columns: 300px 5fr;
+  grid-template-rows: 1fr $notesControls-height;
+  overflow-y: hidden;
 }
 
 .notesControls{

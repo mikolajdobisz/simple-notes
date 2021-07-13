@@ -1,5 +1,11 @@
-.NotesContainer{
+.NotesWrapper{
   padding-top: 2rem;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-rows: min-content;
+}
+
+.NotesContainer{
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

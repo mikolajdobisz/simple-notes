@@ -12,9 +12,7 @@ const Layout = ({children}) => {
     <div id="root" className="theme-light">
       <BackgroundCanvas/>
       <Navbar/>
-      <main>
-        {children}
-      </main>
+      {children}
       <footer className="text-center">
         <small>&copy; Copyright {getDate()}, Mikołaj Dobisz</small>
       </footer>

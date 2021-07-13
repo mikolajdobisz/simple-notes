@@ -9,7 +9,7 @@ const NotesContainer = ({noteboard}) => {
   }, [noteboard])
 
   return (
-    <div>
+    <div className={styles.NotesWrapper}>
       <div className={styles.NotesContainer}>
         <Note 
           title="English" 

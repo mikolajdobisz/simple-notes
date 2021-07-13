@@ -10,6 +10,9 @@ html{
 #root{
   height: 100vh;
   background: $primary-2;
+  display: grid;
+  grid-template-rows: $navbar-height 1fr $footer-height;
+  //overflow: hidden;
 }
 
 main{
@@ -85,7 +88,12 @@ main{
 
 footer{
   z-index: 10;
-  position: absolute;
-  bottom: 0;
+  //position: absolute;
+  //bottom: 0;
   width: 100%;
+  height: $footer-height;
+}
+
+.testBorder{
+  box-shadow: inset 0px 0px 0px 4px #FF0000;
 }
