@@ -4,6 +4,13 @@ export class Vector2{
     this.y = _y;
   }
 
+  log = () => {
+    console.log({
+      x: this.x,
+      y: this.y,
+    });
+  }
+
   add = (v2) => {
     this.x += v2.x
     this.y += v2.y
@@ -18,6 +25,17 @@ export class Vector2{
     const len = this.getLength()
     this.x /= len
     this.y /= len
+  }
+
+  getClone = () => {
+    return new Vector2(this.x, this.y)
+  }
+
+  getOpposite = () => {
+    const v = this.getClone()
+    v.x = -v.x
+    v.y = -v.y
+    return v
   }
 
   getDistance = (v2) => {

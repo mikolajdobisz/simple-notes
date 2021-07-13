@@ -67,7 +67,7 @@ main{
 }
 
 .headline{
-  font-family: $font-headlines;
+  font-family: $font-headlines, $font-primary, $fonts-basic;
 }
 
 .link{

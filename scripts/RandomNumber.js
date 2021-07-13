@@ -17,6 +17,14 @@ function toHex(d) {
   return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
 }
 
+export const getRandomColor = () => {
+  const r = getRandomInt(0, 255)
+  const g = getRandomInt(0, 255)
+  const b = getRandomInt(0, 255)
+
+  return toHex(r)+toHex(g)+toHex(b);
+}
+
 export const getRandomGray = (min, max) => {
   const c = getRandomInt(min, max)
 

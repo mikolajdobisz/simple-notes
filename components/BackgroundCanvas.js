@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Circle from '../scripts/Circle'
-import { getRandomFloat, getRandomGray, getRandomInt } from '../scripts/RandomNumber'
+import { getRandomColor, getRandomFloat, getRandomGray, getRandomInt } from '../scripts/RandomNumber'
 import { Vector2 } from '../scripts/Vector2'
 import styles from '../styles/modules/BackgroundCanvas.module.scss'
+import settings from '../scripts/settings.json'
 
 const BackgroundCanvas = () => {
 
   const canvasRef = useRef(null)
+  const mousePosition = new Vector2(null, null)
 
   const draw = (ctx, circles, mousePosition) => {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
@@ -23,23 +25,24 @@ const BackgroundCanvas = () => {
     ctx.canvas.height = window.innerHeight
   }
 
+  const windowOnMouseMove = e => {
+    mousePosition.x = e.clientX
+    mousePosition.y = e.clientY
+  }
+
   useEffect(() => {
     const c = canvasRef.current
     const ctx = c.getContext('2d')
-    
-    let mousePosition = new Vector2(null, null)
 
-    window.addEventListener("mousemove", e => {
-      mousePosition.x =  e.offsetX,
-      mousePosition.y = e.offsetY
-    })
+    window.addEventListener("mousemove", windowOnMouseMove)
 
     let circles = []
-    for(let i = 0; i < 4; i++){
+    const circleColors = settings['circle-colors'];
+    for(let i = 0; i < circleColors.length; i++){
       let x = getRandomFloat(0, window.innerWidth, 3)
       let y = getRandomFloat(0, window.innerHeight, 3)
       let r = getRandomInt(0, window.innerWidth / 2)
-      let color = "#" + getRandomGray(220, 255);
+      let color = circleColors[i];
       let vel = new Vector2(getRandomFloat(-1, 1, 3), getRandomFloat(-1, 1, 3))
       circles[i] = new Circle(x, y, r, color, vel)
     }    
@@ -57,6 +60,7 @@ const BackgroundCanvas = () => {
     
     return () => {
       window.cancelAnimationFrame(animationFrameId)
+      window.removeEventListener("mousemove", windowOnMouseMove)
     }
   }, [])
 

@@ -1,6 +1,12 @@
 import { Vector2 } from "./Vector2";
+import settings from '../scripts/settings.json';
 
 export default class Circle{
+
+  static divider = settings["circle-speedDivider"];
+  static speedTreshold = settings["circle-speedFrictionTreshold"];
+  static friction = settings["circle-friction"];
+
   constructor(_x, _y, _r, _color, _velocity){
     this.position = new Vector2(_x, _y)
     this.r = _r;
@@ -26,11 +32,30 @@ export default class Circle{
     }
     
     const dist = this.position.getDistance(mousePosition)
-    if(dist < this.r){
+    if(dist <= this.r){
       let directionalVector = mousePosition.getDirectionalVector(this.position)
       directionalVector.normalize()
-      directionalVector.multiplyByScalar((this.r - dist) / this.r / 100)
-      this.velocity.add(directionalVector)
+      directionalVector.multiplyByScalar((this.r - dist) / this.r / Circle.divider)
+      this.velocity.add(directionalVector) 
+    }
+
+    this.applyFriction()
+    //this.snapVelocityToValue(Circle.speedTreshold)
+  }
+
+  applyFriction(){
+    if(this.velocity.getLength() > Circle.speedTreshold){
+      const frictionVector = this.velocity.getOpposite()
+      frictionVector.normalize()
+      frictionVector.multiplyByScalar(Circle.friction)
+      this.velocity.add(frictionVector)
+    }
+  }
+
+  snapVelocityToValue(val){
+    if(this.velocity.getLength() > val){
+      this.velocity.normalize()
+      this.velocity.multiplyByScalar(val)
     }
   }
 

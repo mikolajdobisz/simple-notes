@@ -13,6 +13,9 @@ const Navbar = () => {
         <li>
           <Link href="/noteboards"><a>Noteboards</a></Link>
         </li>
+        <li>
+          <Link href="/bg"><a>Background</a></Link>
+        </li>
       </ul>
       <Link href="/signin">
         <button className="std">Sign In</button>

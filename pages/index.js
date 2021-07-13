@@ -36,10 +36,10 @@ export default function Home() {
           </div>
           <div className={styles.right}>
             <h2 className="headline">
-              YOU DO NOT NEED AN ACCOUNT
+              YOU DON'T NEED AN ACCOUNT
             </h2>
             <p>
-              No need for logging in to try it out. 
+              No need to log in to try it out. 
             </p>
             <p>
               Store your notes in your browser and access them locally.

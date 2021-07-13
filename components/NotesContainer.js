@@ -5,7 +5,7 @@ import styles from '../styles/modules/NotesContainer.module.scss'
 const NotesContainer = ({noteboard}) => {
 
   useEffect(() => {
-    console.log(noteboard);
+    
   }, [noteboard])
 
   return (
