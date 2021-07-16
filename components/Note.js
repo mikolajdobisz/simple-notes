@@ -2,16 +2,25 @@ import React, { useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import styles from '../styles/modules/Note.module.scss'
 import settings from '../scripts/settings.json'
+import Draggable from 'react-draggable'
 
-const Note = ({title, text, color, customStyle, readonly}) => {
 
+const Note = ({title, text, color, readonly}) => {
+
+  //state - is note saved or not
   const [unsaved, setUnsaved] = useState(false);
+  
+
   //states connected with text values
   const [textVal, setTextVal] = useState();
   const [titleVal, setTitleVal] = useState();
+  
   //states connected with color
   const [colorMenu, setColorMenu] = useState(false);
+  const [colors, setColors] = useState(settings['notes-colors']);
+  const [colorIndex, setColorIndex] = useState(color);
 
+  //useEffect - is note saved or not
   useEffect(() => {
     if(textVal == text && titleVal == title){
       if(unsaved) setUnsaved(false)
@@ -21,42 +30,67 @@ const Note = ({title, text, color, customStyle, readonly}) => {
     }
   }, [textVal, titleVal])
 
+  //useEffect - save title and text values from parent component to local states
   useEffect(() => {
     setTextVal(text);
     setTitleVal(title);
   }, [title, text])
 
-  const saveChangesButton = () => {
+
+  //return style with color
+  const getColorStyle = () => {
+    return {
+      backgroundColor: colors[colorIndex]
+    }
+  }
+
+  const changeColor = (index) => {
+    if(index != colorIndex) setColorIndex(index)
+  }
+
+  const saveChangesHandler = () => {
     // ### Make note save to storage or db
     setUnsaved(false);
   }
 
-  const colorStyle = {backgroundColor: settings['notes-colors'][color]}
-
   return (
-    <div style={customStyle}>
+    <div className={styles.Note}>
       {colorMenu &&
       <div 
-        className={styles.colorsMenu}
-        style={colorStyle}
+        className={styles.colorMenu}
+        //style={getColorStyle()}
       >
-          halo
+          {
+            colors.map((el, i) => {
+              return <div 
+              className={styles.color} 
+                style={{background: colors[i]}} 
+                key={i}
+                onClick={() => {changeColor(i)}}
+                >
+              </div>
+            })
+          }
       </div>
       }
-      <div style={colorStyle} className={styles.Note}>
+      <div style={getColorStyle()} className={styles.NoteContent}>
         <div className={styles.nav}>
-          <i 
-            className={"material-icons-round icon " + styles.icon}
-            onClick={() => {setColorMenu(!colorMenu)}}
-          >
-            palette
-          </i>
-          <span>
+          <span className={styles.left}>
+            <i 
+              className={"material-icons-round icon " + styles.icon}
+              onClick={() => {setColorMenu(!colorMenu)}}
+            >
+              palette
+            </i>
+          </span>
+          <span className={styles.center}>
+          </span>
+          <span className={styles.right}>
             {
               unsaved && 
               <i 
                 className={"material-icons-round icon " + styles.icon}
-                onClick={saveChangesButton}
+                onClick={saveChangesHandler}
               >
                 done
               </i>

@@ -1,6 +1,12 @@
 @import '../variables.scss';
 
 .Note{
+  > * {
+    box-shadow: $shadow-1;
+  }
+}
+
+.NoteContent{
   color: $primary-1;
   border-radius: $note-border-radius;
   
@@ -10,14 +16,33 @@
 
   .nav{
     display: flex;
-    justify-content: space-between;
     background-color: $darken;
-    padding: 0.5rem;
     border-radius: 
     $note-border-radius $note-border-radius 0 0;
 
+    .left{
+      flex: content;
+    }
+
+    .center{
+      flex: 1;
+      cursor: move;
+    }
+
+    .right{
+      flex: content;
+    }
+
+    .icon{
+      cursor: pointer;
+      &:hover{
+        transform: scale(1.2);
+      }
+    }
+
     > span{
-      line-height: 1em;
+      padding: 0.5rem;
+      line-height: 0;
     }
   }
 
@@ -64,16 +89,31 @@
   }
 }
 
-.icon{
-  cursor: pointer;
-  &:hover{
-    transform: scale(1.2);
-  }
-}
-
-.colorsMenu{
+.colorMenu{
   z-index: 10;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: $note-border-radius;
   margin: 0.5rem 0.5rem 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: $primary-1;
+}
+
+.color{
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  margin: 0.2rem;
+  box-shadow: $shadow-1;
+  transition: box-shadow 0.2s $transition-function;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: $shadow-2;
+  }
+
+  &:active{
+    box-shadow: $shadow-3;
+  }
 }

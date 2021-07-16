@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Note from '../components/Note'
+import FakeNote from '../components/FakeNote'
 import styles from '../styles/modules/Home.module.scss'
 
 export default function Home() {
@@ -16,17 +16,15 @@ export default function Home() {
       <div className={styles.section_1}>
         <div className={"container " + styles.container}>
           <div>
-            <Note 
+            <FakeNote 
               title="Maths" 
               text="Learn polynomial equations for friday's exam"
-              color="pink"
-              readonly={true}
+              color={0}
             />
-            <Note 
+            <FakeNote 
               title="Groceries" 
               text="Learn polynomial equations for friday's exam"
-              color="orange"
-              readonly={true}
+              color={2}
               customStyle={{
                 position: "absolute",
                 top: "160px",
