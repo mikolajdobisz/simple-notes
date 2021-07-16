@@ -14,22 +14,22 @@ const NotesContainer = ({noteboard}) => {
         <Note 
           title="English" 
           text="Essay due friday"
-          color="blue"
+          color={0}
         />
         <Note 
           title="Maths" 
           text="Learn polynomial equations for friday's exam"
-          color="orange"
+          color={1}
         />
         <Note 
           title="Social studies" 
           text="Prepare a presentation for monday"
-          color="pink"
+          color={2}
         />
         <Note 
           title="Maths" 
           text="Homework p.74 ex.1-7"
-          color="green"
+          color={3}
         />
       </div>
     </div>

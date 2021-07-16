@@ -2,9 +2,9 @@
 
 .Note{
   color: $primary-1;
-  border-radius: 16px;
-  overflow: hidden;
-  width: 260px;
+  border-radius: $note-border-radius;
+  
+  width: $note-width;
   min-height: 220px;
   margin: 0.5rem;
 
@@ -13,6 +13,12 @@
     justify-content: space-between;
     background-color: $darken;
     padding: 0.5rem;
+    border-radius: 
+    $note-border-radius $note-border-radius 0 0;
+
+    > span{
+      line-height: 1em;
+    }
   }
 
   .title, .text{
@@ -56,4 +62,18 @@
   .text{
     padding: 0.3rem 0.5rem 0.5rem 0.5rem;
   }
+}
+
+.icon{
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+
+.colorsMenu{
+  z-index: 10;
+  padding: 1rem;
+  border-radius: $note-border-radius;
+  margin: 0.5rem 0.5rem 0 0.5rem;
 }

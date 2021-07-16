@@ -4,5 +4,8 @@
   "circle-friction": 0.05,
   "circle-colors": [
     "#FFFFFF", "#E7E7E7", "#DEDEDE", "#B7B7B7"
+  ],
+  "notes-colors": [
+    "#de8540", "#407fde", "#d4195e", "#409147"
   ]
 }
