@@ -9,10 +9,8 @@
 .NoteContent{
   color: $primary-1;
   border-radius: $note-border-radius;
-  
   width: $note-width;
-  min-height: 220px;
-  margin: 0.5rem;
+  min-height: 260px;
 
   .nav{
     display: flex;
@@ -76,7 +74,7 @@
   .title{
     font-weight: bold;
     font-size: 1.2rem;
-    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    padding: 0.5rem;
     
     >textarea{
       text-transform: uppercase;
@@ -85,11 +83,12 @@
   }
 
   .text{
-    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+    padding: 0rem 0.5rem 0.5rem 0.5rem;
   }
 }
 
 .colorMenu{
+  width: $note-width;
   z-index: 10;
   padding: 0.5rem;
   border-radius: $note-border-radius;
@@ -106,7 +105,7 @@
   border-radius: 100%;
   margin: 0.2rem;
   box-shadow: $shadow-1;
-  transition: box-shadow 0.2s $transition-function;
+  transition: box-shadow 0.2s $transition-function, transform 0.05s $transition-function;
   cursor: pointer;
 
   &:hover{
@@ -115,5 +114,6 @@
 
   &:active{
     box-shadow: $shadow-3;
+    transform: scale(1.2);
   }
 }

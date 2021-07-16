@@ -6,10 +6,8 @@
 
   .buttons{
     display: flex;
-
-    > div{
-      margin: 0.3rem;
-    }
+    gap: 0.5rem;
+    padding-bottom: 1rem;
   }
 
   .list{
