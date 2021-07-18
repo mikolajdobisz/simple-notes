@@ -1,6 +1,9 @@
 @import '../variables.scss';
 
 .Note{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   > * {
     box-shadow: $shadow-1;
   }
@@ -13,22 +16,14 @@
   min-height: 260px;
 
   .nav{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     background-color: $darken;
     border-radius: 
     $note-border-radius $note-border-radius 0 0;
 
-    .left{
-      flex: content;
-    }
-
     .center{
-      flex: 1;
       cursor: move;
-    }
-
-    .right{
-      flex: content;
     }
 
     .icon{
@@ -92,7 +87,6 @@
   z-index: 10;
   padding: 0.5rem;
   border-radius: $note-border-radius;
-  margin: 0.5rem 0.5rem 0 0.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

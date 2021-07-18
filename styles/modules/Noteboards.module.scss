@@ -2,7 +2,7 @@
 
 .noteboards{
   display: grid;
-  grid-template-columns: 300px 5fr;
+  grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr $notesControls-height;
   overflow-y: hidden;
 }

@@ -1,6 +1,6 @@
 .NotesWrapper{
   padding-top: 2rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: grid;
   grid-template-rows: min-content;
 }
