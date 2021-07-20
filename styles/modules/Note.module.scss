@@ -26,13 +26,6 @@
       cursor: move;
     }
 
-    .icon{
-      cursor: pointer;
-      &:hover{
-        transform: scale(1.2);
-      }
-    }
-
     > span{
       padding: 0.5rem;
       line-height: 0;

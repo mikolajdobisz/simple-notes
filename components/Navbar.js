@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from '../styles/modules/Navbar.module.scss'
+import NavLink from './NavLink'
 
 
 const Navbar = () => {
@@ -8,13 +9,13 @@ const Navbar = () => {
     <nav className={styles.Navbar}>
       <ul>
         <li>
-          <Link href="/"><a>Home</a></Link>
+          <NavLink href="/">Home</NavLink>
         </li>
         <li>
-          <Link href="/noteboards"><a>Noteboards</a></Link>
+          <NavLink href="/noteboards">Noteboards</NavLink>
         </li>
         <li>
-          <Link href="/bg"><a>Background</a></Link>
+          <NavLink href="/bg">Background</NavLink>
         </li>
       </ul>
       <Link href="/signin">

@@ -3,6 +3,7 @@ import TextareaAutosize from 'react-textarea-autosize'
 import styles from '../styles/modules/Note.module.scss'
 import settings from '../scripts/settings.json'
 import Draggable from 'react-draggable'
+import Icon from './Icon'
 
 
 const Note = ({title, text, color, readonly}) => {
@@ -76,28 +77,15 @@ const Note = ({title, text, color, readonly}) => {
       <div style={getColorStyle()} className={styles.NoteContent}>
         <div className={styles.nav}>
           <span className={styles.left}>
-            <i 
-              className={"material-icons-round icon " + styles.icon}
-              onClick={() => {setColorMenu(!colorMenu)}}
-            >
-              palette
-            </i>
+            <Icon onClick={() => {setColorMenu(!colorMenu)}} name="palette" isBtn={true}/>
           </span>
           <span className={styles.center}>
           </span>
           <span className={styles.right}>
             {
-              unsaved && 
-              <i 
-                className={"material-icons-round icon " + styles.icon}
-                onClick={saveChangesHandler}
-              >
-                done
-              </i>
+              unsaved && <Icon onClick={saveChangesHandler} isBtn={true} name="done"/>
             }
-            <i className={"material-icons-round icon " + styles.icon}>
-              close
-            </i>
+            <Icon isBtn={true} name="close"/>
           </span>
         </div>
         <div className={styles.title}>

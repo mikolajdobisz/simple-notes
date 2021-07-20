@@ -2,6 +2,7 @@
 
 .NoteboardsList{
   padding: 2rem;
+  overflow-y: auto;
   //border: 1px solid red;
 
   .buttons{
@@ -12,7 +13,6 @@
 
   .list{
     .el{
-      //border: 1px solid red;
       height: 3rem;
       margin: 0.5rem 0;
       display: flex;
@@ -21,6 +21,7 @@
       border-radius: 100px;
       background: $primary-1;
       box-shadow: $shadow-1;
+      cursor: pointer;
 
       &:hover{
         background-color: $primary-3;

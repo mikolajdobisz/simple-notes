@@ -31,6 +31,16 @@ const NotesContainer = ({noteboard}) => {
           text="Homework p.74 ex.1-7"
           color={3}
         />
+        <Note 
+          title="English" 
+          text="Essay due friday"
+          color={0}
+        />
+        <Note 
+          title="Maths" 
+          text="Learn polynomial equations for friday's exam"
+          color={1}
+        />
       </div>
     </div>
   )

@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import BackgroundCanvas from './BackgroundCanvas'
+import Footer from './Footer'
 
 const Layout = ({children}) => {
-  const getDate = () => {
-    const d = new Date()
-    return d.getFullYear()
-  }
-
   return (
     <div id="root" className="theme-light">
       <BackgroundCanvas/>
       <Navbar/>
-      {children}
-      <footer className="text-center">
-        <small>&copy; Copyright {getDate()}, Mikołaj Dobisz</small>
-      </footer>
+      <div id="page">
+        {children}
+        <Footer/>
+      </div>
     </div>
   )
 }

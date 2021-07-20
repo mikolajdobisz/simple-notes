@@ -15,30 +15,31 @@ body{
   height: 100vh;
   background: $primary-2;
   display: grid;
-  grid-template-rows: $navbar-height 1fr $footer-height;
-  //overflow: hidden;
+  grid-template-rows: $navbar-height 1fr;
+  overflow: hidden;
+}
+
+#page{
+  display: grid;
+  overflow-y: auto;
+  grid-template-rows: 1fr $footer-height;
 }
 
 main{
   z-index: 2;
 }
 
-.orange{
-  background-color: $orange !important;
-}
-.blue{
-  background-color: $blue !important;
-}
-.pink{
-  background-color: $pink !important;
-}
-.green{
-  background-color: $green !important;
+.icon{
+  font-size: 1.5rem;
+  user-select: none;
 }
 
-.icon{
-  font-size: 1.8rem;
-  user-select: none;
+.icon-button{
+  cursor: pointer;
+  transition: transform .1s $transition-function;
+  &:hover{
+    transform: scale(1.2);
+  }
 }
 
 .container {
@@ -90,10 +91,12 @@ main{
   }
 }
 
+a.active{
+  color: $accent-1;
+}
+
 footer{
   z-index: 10;
-  //position: absolute;
-  //bottom: 0;
   width: 100%;
   height: $footer-height;
 }

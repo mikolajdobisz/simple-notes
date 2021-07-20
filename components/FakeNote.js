@@ -2,24 +2,28 @@ import React, { useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import styles from '../styles/modules/Note.module.scss'
 import settings from '../scripts/settings.json'
+import Icon from './Icon'
 
-const FakeNote = ({title, text, color, customStyle}) => {
-  const colorStyle = {backgroundColor: settings['notes-colors'][color]}
+const FakeNote = ({title, text, colorIndex, customStyle}) => {
+
+  const getColorStyle = () => {
+    const colors = settings['notes-colors'];
+    return {
+      backgroundColor: colors[colorIndex]
+    }
+  }
 
   return (
-    <div style={customStyle}>
-      <div style={colorStyle} className={styles.Note}>
+    <div style={customStyle} className={styles.Note}>
+      <div style={getColorStyle()} className={styles.NoteContent}>
         <div className={styles.nav}>
-          <i 
-            className={"material-icons-round icon " + styles.icon}
-            onClick={() => {setColorMenu(!colorMenu)}}
-          >
-            palette
-          </i>
-          <span>
-            <i className={"material-icons-round icon " + styles.icon}>
-              close
-            </i>
+          <span className={styles.left}>
+            <Icon name="palette"/>
+          </span>
+          <span className={styles.center}>
+          </span>
+          <span className={styles.right}>
+            <Icon name="close"/>
           </span>
         </div>
         <div className={styles.title}>
@@ -28,7 +32,7 @@ const FakeNote = ({title, text, color, customStyle}) => {
           placeholder="Title" 
           spellCheck="false"
           defaultValue={title}
-          disabled={true}
+          readOnly={true}
           />
         </div>
         <div className={styles.text}>
@@ -36,7 +40,7 @@ const FakeNote = ({title, text, color, customStyle}) => {
           placeholder="Text" 
           spellCheck="false"
           defaultValue={text}
-          disabled={true}
+          readOnly={true}
           />
         </div>
       </div>

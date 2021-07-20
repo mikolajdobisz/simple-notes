@@ -4,6 +4,7 @@ import NotesContainer from './NotesContainer'
 import NoteboardsList from './NoteboardsList'
 import CircleIconButton from './CircleIconButton'
 import styles from '../styles/modules/Noteboards.module.scss'
+import Footer from './Footer'
 
 const Noteboards = ({noteboard_id}) => {
 

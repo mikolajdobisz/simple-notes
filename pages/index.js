@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import FakeNote from '../components/FakeNote'
+import Footer from '../components/Footer'
 import styles from '../styles/modules/Home.module.scss'
 
 export default function Home() {
@@ -19,12 +20,12 @@ export default function Home() {
             <FakeNote 
               title="Maths" 
               text="Learn polynomial equations for friday's exam"
-              color={0}
+              colorIndex={3}
             />
             <FakeNote 
               title="Groceries" 
               text="Learn polynomial equations for friday's exam"
-              color={2}
+              colorIndex={4}
               customStyle={{
                 position: "absolute",
                 top: "160px",
@@ -50,8 +51,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      
     </main>
   )
 }
