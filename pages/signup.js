@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../contexts/authUserContext";
 
-const signup = () => {
+const Signup = () => {
 
   const router = useRouter();
 
@@ -66,4 +66,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default Signup

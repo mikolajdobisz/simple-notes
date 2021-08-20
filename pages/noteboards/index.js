@@ -1,6 +1,6 @@
 import Noteboards from '../../components/Noteboards';
 
-export default function noteboards() {
+export default function NoteboardsIndex() {
   return (
     <Noteboards/>
   )

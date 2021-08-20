@@ -1,4 +1,4 @@
 import Noteboards from '../../components/Noteboards';
-import noteboards from '.';
+import NoteboardsIndex from '.';
 
-export default noteboards;
+export default NoteboardsIndex;
