@@ -1,0 +1,109 @@
+$blue: #407ee3;
+$buttonColor: #60788a;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+//.container
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+//---------------------------
+
+input, button{
+  font: inherit;
+}
+
+input{
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #232323;
+  outline: none;
+
+  &:focus{
+    border-color: $blue;
+  }
+}
+
+button{ 
+  background-color: $buttonColor;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+
+  &:hover{
+    background-color: darken($buttonColor, $amount: 15%);
+  }
+
+  &:active{
+    background-color: lighten($buttonColor, $amount: 15%);
+  }
+}
+
+button.primary{
+  background-color: $blue;
+
+  &:hover{
+    background-color: darken($blue, $amount: 15%);
+  }
+
+  &:active{
+    background-color: lighten($blue, $amount: 15%);
+  }
+}
+
+.form-default{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .errorMessage{
+    color: red;
+  }
+}
+
+.form-item{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}

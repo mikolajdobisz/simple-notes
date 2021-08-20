@@ -1,0 +1,25 @@
+.controlPanel{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.noteboardsList{
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.noteboard{
+  background-color: #f0f0f0;
+  padding: 1rem;
+
+  &.active{
+    background-color: lightblue;
+  }
+
+  &:hover{
+    background-color: #cbcbcb;
+  }
+}
