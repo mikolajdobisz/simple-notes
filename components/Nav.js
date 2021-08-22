@@ -7,11 +7,6 @@ const Nav = () => {
 
   const authCtx = useAuthContext();
 
-  useEffect(() => {
-    // console.log("User auth status changed:");
-    // console.log(authCtx.userInfo)
-  }, [authCtx.userInfo])
-
   return (
     <nav className={styles.nav}>
       <ul>

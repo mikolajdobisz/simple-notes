@@ -1,7 +1,8 @@
 export default function Home() {
   return (
     <div>
-      Home
+      <button className="primary">Dummy Btn</button>
+      <button className="alternate">Dummy Btn</button>
     </div>
   )
 }

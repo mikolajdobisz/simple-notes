@@ -1,3 +1,4 @@
+import Layout from '../components/Layout'
 import Nav from '../components/Nav'
 import { AuthUserProvider } from '../contexts/authUserContext'
 import { FirestoreProvider } from '../contexts/firestoreContext'
@@ -7,8 +8,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthUserProvider>
       <FirestoreProvider>
-        <Nav/>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </FirestoreProvider>
     </AuthUserProvider>
   )

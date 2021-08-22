@@ -1,6 +1,8 @@
+@import './variables';
+
 .nav{
-  height: 80px;
-  padding: 0 2rem;
+  height: $nav-height;
+  padding: 0 $padding-sides;
   background: #efefef;
   display: flex;
   align-items: center;
