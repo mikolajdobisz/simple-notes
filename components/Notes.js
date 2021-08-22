@@ -3,6 +3,7 @@ import { useFirestoreContext } from '../contexts/firestoreContext'
 import useFirebaseAuth from '../firebase/useFirebaseAuth';
 import styles from '../styles/Notes.module.scss'
 import Note from './Note';
+import RoundButton from './RoundButton';
 
 const Notes = ({noteboardID}) => {
 
@@ -37,6 +38,7 @@ const Notes = ({noteboardID}) => {
   }, [firestoreCtx.db, userInfo, noteboardID])
 
   const addHandler = () => {
+    console.log("XD");
     firestoreCtx.addNote(noteboardID)
     .then(docRef => {
       console.log(`Success! Note added to noteboard: ${noteboardID}`);
@@ -58,10 +60,14 @@ const Notes = ({noteboardID}) => {
   )
   
   return (
-    <div className={styles.Notes}>
-      <button onClick={addHandler}>Add Note</button>
-      {notesElements}
-    </div>
+    <>
+      <div className={styles.Notes}>
+        {notesElements}
+      </div>
+      <div className={styles.NotesControls}>
+        <RoundButton onClick={addHandler} iconName="majesticons:plus-line"/>
+      </div>
+    </>
   )
 }
 

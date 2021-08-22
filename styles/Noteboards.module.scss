@@ -1,4 +1,12 @@
-.main{
-  padding: 0 1rem;
+@import './variables';
+
+.Noteboards{
+  padding: 2rem $padding-sides 0 $padding-sides;
+
+  //background: skyblue;
+
   display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr $NotesControls-height;
+  overflow-y: hidden;
 }

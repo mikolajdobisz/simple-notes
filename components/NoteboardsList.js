@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useFirestoreContext } from '../contexts/firestoreContext';
 import styles from '../styles/NoteboardsList.module.scss';
+import RoundButton from './RoundButton';
 
 const NoteboardsList = ({noteboards, noteboardID}) => {
   const [newNoteboardName, setNewNoteboardName] = useState("");
@@ -46,7 +47,10 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
   })
 
   return (
-    <div className={styles.Noteboards}>
+    <div className={styles.NoteboardsList}>
+      <div className={"headline " + styles.noteboardsHeadline}>
+        Noteboards
+      </div>
       <div className={styles.controlPanel}>
         <input 
           value={newNoteboardName} 
@@ -54,8 +58,8 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
           onInput={e => {setNewNoteboardName(e.target.value)}}
           placeholder="Noteboard Name"
         />
-        <button onClick={addHandler}>Add</button>
-        <button>Remove Current</button>
+        <RoundButton onClick={addHandler} iconName="majesticons:plus-line"/>
+        {/* <RoundButton iconName="majesticons:trash-line"/> */}
       </div>
       <div className={styles.noteboardsList}>
         {noteboardsElements}

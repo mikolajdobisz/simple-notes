@@ -44,7 +44,7 @@ const Noteboards = () => {
   }, [firestoreCtx.db, userInfo])
 
   return (
-    <div className={styles.main}>
+    <div className={styles.Noteboards}>
       <NoteboardsList noteboardID={noteboardID} noteboards={noteboards}/>
       <Notes noteboardID={noteboardID}/>
     </div>

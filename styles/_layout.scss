@@ -1,0 +1,17 @@
+//top level layout
+.app{
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow-y: hidden;
+}
+
+.content{
+  display: grid;
+  grid-template-rows: 1fr $footer-height;
+  overflow-y: auto;
+}
+
+// .home{
+//   overflow-y: auto;
+// }

@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 @import './variables';
+@import './mixins';
 @import './basic';
 @import './forms';
+@import './layout';
 
 html{
   font-family: $font-primary, $fonts-basic;
   font-size: $font-size;
+}
+
+body{
+  background: $main-1;
 }
 
 //-------------------
@@ -14,6 +20,25 @@ html{
 
 .text-center{
   text-align: center;
+}
+
+.flex-center{
+  @include flex-center();
+}
+
+.link{
+  color: $primary;
+  text-decoration: underline;
+
+  &:visited{
+    color: $primary-dark;
+  }
+}
+
+.headline{
+  font-size: 2rem;
+  color: $darken-3;
+  font-weight: bold;
 }
 
 //bootstrap like container

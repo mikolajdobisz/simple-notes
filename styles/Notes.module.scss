@@ -1,3 +1,21 @@
+@import './variables';
+@import './mixins';
+
 .Notes{
   padding-top: 3rem;
+
+  //background: orange;
+
+  grid-column: 5/13;
+  grid-row: 1/2;
+  overflow-y: auto;
+}
+
+.NotesControls{
+  @include flex-center();
+
+  //background: purple;
+
+  grid-column: 1/13;
+  grid-row: 2/3;
 }

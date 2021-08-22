@@ -1,11 +1,12 @@
+//input
 input, button{
   font: inherit;
 }
 
 input{
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 2px solid #232323;
+  border-radius: 100px;
+  border: 1px solid $darken-2;
   outline: none;
 
   &:focus{
@@ -13,18 +14,25 @@ input{
   }
 }
 
+label{
+  color: $darken-3;
+}
+
 //buttons
 button{ 
+  cursor: pointer;
   padding: 0.75em 1.5em;
   border: none;
   border-radius: $border-radius;
+  background-color: $main-2;
+  color: $contrast;
 
   &:hover{
-    background-color: darken($buttonColor, $amount: 15%);
+    background-color: darken($main-2, $amount: 20%);
   }
 
   &:active{
-    background-color: lighten($buttonColor, $amount: 15%);
+    background-color: lighten($main-2, $amount: 10%);
   }
 }
 
@@ -33,18 +41,71 @@ button.primary{
   color: $main-1;
 
   &:hover{
-    background-color: darken($primary, $amount: 15%);
+    background-color: darken($primary, $amount: 20%);
   }
 
   &:active{
-    background-color: lighten($primary, $amount: 15%);
+    background-color: lighten($primary, $amount: 10%);
   }
+}
+
+button.alternate{
+  $border-thickness: 1px;
+
+  background-color: $main-1;
+  border: $border-thickness solid $primary;
+  color: $primary-dark;
+
+  &:hover{
+    $c: darken($primary, $amount: 20%);
+    background-color: $c;
+    border: $border-thickness solid $c;
+    color: $main-1;
+  }
+
+  &:active{
+    $c: lighten($primary, $amount: 10%);
+    background-color: $c;
+    border: $border-thickness solid $c;
+  }
+}
+
+//special buttons
+.RoundButton{
+  @include flex-center();
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  background: $primary;
+  border-radius: 100px;
+
+  &:hover{
+    background: darken($primary, $darken-percentage);
+  }
+
+  &:active{
+    background: lighten($primary, $lighten-percentage);
+  }
+
+  .icon{
+    width: 2rem;
+    height: 2rem;
+    color: $main-1;
+  }
+}
+
+.form-window{
+  padding: 2rem 10rem;
+  border-radius: $border-radius;
+  background: $main-2;
+  border: 1px solid $darken-2;
+  box-shadow: $shadow-1;
 }
 
 .form-default{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 1rem;
 
   .errorMessage{
@@ -56,4 +117,10 @@ button.primary{
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.form-column{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
