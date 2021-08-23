@@ -5,8 +5,10 @@ import { useAuthContext } from "./authUserContext";
 const firestoreContext = createContext({
   db: null,
   addNoteboard: null,
+  deleteNoteboard: null,
   addNote: null,
   updateNote: null,
+  deleteNote: null,
 })
 
 export function FirestoreProvider({children}){

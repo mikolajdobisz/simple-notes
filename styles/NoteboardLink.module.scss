@@ -1,0 +1,31 @@
+@import './variables';
+@import './mixins';
+
+.noteboardContainer{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.noteboard{
+  @include flex-center();
+  cursor: pointer;
+  background-color: $main-1;
+  box-shadow: $shadow-1;
+  padding: 1rem 0;
+  width: 280px;
+  border-radius: 100px;
+
+  &.active{
+    background-color: $primary;
+    color: $main-1;
+  }
+
+  &:not(.active):hover{
+    background-color: darken($main-1, $darken-percentage);
+  }
+}
+
+.noteboardsHeadline{
+  color: $darken-2;
+}

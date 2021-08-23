@@ -61,8 +61,10 @@ const Notes = ({noteboardID}) => {
   
   return (
     <>
-      <div className={styles.Notes}>
-        {notesElements}
+      <div className={styles.NotesContainer}>
+        <div className={styles.Notes}>
+          {notesElements}
+        </div>
       </div>
       <div className={styles.NotesControls}>
         <RoundButton onClick={addHandler} iconName="majesticons:plus-line"/>

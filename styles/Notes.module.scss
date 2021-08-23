@@ -1,14 +1,19 @@
 @import './variables';
 @import './mixins';
 
-.Notes{
+.NotesContainer{
   padding-top: 3rem;
-
-  //background: orange;
-
-  grid-column: 5/13;
+  padding-left: 3rem;
+  grid-column: 2/3;
   grid-row: 1/2;
   overflow-y: auto;
+}
+
+.Notes{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .NotesControls{
@@ -16,6 +21,15 @@
 
   //background: purple;
 
-  grid-column: 1/13;
+  grid-column: 1/3;
   grid-row: 2/3;
 }
+
+// .Note{
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.5rem;
+//   > * {
+//     box-shadow: $shadow-1;
+//   }
+// }

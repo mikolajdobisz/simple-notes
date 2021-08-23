@@ -25,6 +25,10 @@ const useFirestore = (userInfo) => {
     })
   })
 
+  const deleteNoteboard = id => {
+    console.log("Noteboard deletion function: " + id)
+  }
+
   const addNote = (noteboardID) => new Promise((resolve, reject) => {
     if(!userInfo) reject("No user signed in!");
     if(!noteboardID) reject("No noteboardID given!");
@@ -64,11 +68,26 @@ const useFirestore = (userInfo) => {
     }
   }
 
+  const deleteNote = (noteboardID, noteID) => {
+    console.log("Attempting to delete note: " + noteID);
+    const noteRef = db.collection("noteboards")
+    .doc(noteboardID).collection("notes").doc(noteID);
+    noteRef.delete()
+    .then(() => {
+      console.log(`Success! Note ${noteID} deleted.`);
+    })
+    .catch(err => {
+      console.error(err);
+    })
+  }
+
   return ({
     db,
     addNoteboard,
+    deleteNoteboard,
     addNote,
-    updateNote
+    updateNote,
+    deleteNote
   })
 }
 
