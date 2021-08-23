@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
 import { useAuthContext } from '../contexts/authUserContext'
 import styles from '../styles/Nav.module.scss'
+import NavLink from './NavLink';
 
 const Nav = () => {
 
@@ -11,14 +11,10 @@ const Nav = () => {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+          <NavLink link="/" text="Home" regex={/^\/$/}/>
         </li>
         <li>
-          <Link href="/noteboards">
-            <a>Noteboards</a>
-          </Link>
+          <NavLink link="/noteboards" text="Noteboards" regex={/^\/noteboards(\/.*)?$/}/>
         </li>
       </ul>
       {

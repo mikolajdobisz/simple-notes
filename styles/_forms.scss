@@ -72,31 +72,6 @@ button.alternate{
   }
 }
 
-//special buttons
-.RoundButton{
-  @include flex-center();
-  cursor: pointer;
-  width: 48px;
-  height: 48px;
-  background: $primary;
-  border-radius: 100px;
-  box-shadow: $shadow-1;
-
-  &:hover{
-    background: darken($primary, $darken-percentage);
-  }
-
-  &:active{
-    background: lighten($primary, $lighten-percentage);
-  }
-
-  .icon{
-    width: 24px;
-    height: 24px;
-    color: $main-1;
-  }
-}
-
 .form-window{
   padding: 2rem 10rem;
   border-radius: $border-radius;

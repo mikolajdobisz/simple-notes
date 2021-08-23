@@ -29,17 +29,8 @@ const NoteboardLink = ({noteboard, isActive}) => {
           <RoundButton 
           iconName="majesticons:trash-line"
           onClick={deleteHandler}
+          isAlternate={true}
           />
-          
-          /* <IconButton 
-          onClick={deleteHandler}
-          style={{
-            width: "2rem",
-            height: "2rem"
-          }} 
-          isDark={true} 
-          iconName="majesticons:trash-line"
-          /> */
         }
       </div>
   )

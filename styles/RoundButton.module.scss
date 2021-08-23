@@ -1,0 +1,44 @@
+@import './variables';
+@import './mixins';
+
+.RoundButton{
+  @include flex-center();
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  background: $primary;
+  border-radius: 100px;
+  box-shadow: $shadow-2;
+
+  &:hover{
+    background: darken($primary, $darken-percentage);
+  }
+
+  &:active{
+    background: lighten($primary, $lighten-percentage);
+  }
+
+  .icon{
+    width: 24px;
+    height: 24px;
+    color: $main-1;
+  }
+
+  &.alternate{
+    background: $main-1;
+    //border: 2px solid $primary;
+
+    &:hover{
+      background: darken($primary, $darken-percentage);
+      //border-color: darken($primary, $darken-percentage);
+
+      .icon{
+        color: $main-1;
+      }
+    }
+
+    .icon{
+      color: $primary;
+    }
+  }
+}

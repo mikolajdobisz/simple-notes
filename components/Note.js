@@ -12,7 +12,6 @@ const Note = ({note, noteboardID}) => {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    console.log(note);
     setTitle(note.data.title);
     setText(note.data.text);
   }, [note])

@@ -41,6 +41,16 @@ body{
   font-weight: bold;
 }
 
+.NavLink{
+  &:hover{
+    color: $primary;
+  }
+
+  &.active{
+    color: $primary;
+  }
+}
+
 //bootstrap like container
 .container {
   padding-right: 15px;
