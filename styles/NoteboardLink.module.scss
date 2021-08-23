@@ -3,7 +3,7 @@
 
 .noteboardContainer{
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -12,8 +12,8 @@
   cursor: pointer;
   background-color: $main-1;
   box-shadow: $shadow-1;
-  padding: 1rem 0;
   width: 280px;
+  height: 50px;
   border-radius: 100px;
 
   &.active{

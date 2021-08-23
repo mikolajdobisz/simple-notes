@@ -2,6 +2,7 @@ import styles from '../styles/NoteboardLink.module.scss';
 import Link from 'next/link';
 import IconButton from './IconButton';
 import { useFirestoreContext } from '../contexts/firestoreContext';
+import RoundButton from './RoundButton';
 
 const NoteboardLink = ({noteboard, isActive}) => {
 
@@ -24,7 +25,13 @@ const NoteboardLink = ({noteboard, isActive}) => {
           </div>
         </Link>
         {
-          isActive && <IconButton 
+          isActive && 
+          <RoundButton 
+          iconName="majesticons:trash-line"
+          onClick={deleteHandler}
+          />
+          
+          /* <IconButton 
           onClick={deleteHandler}
           style={{
             width: "2rem",
@@ -32,7 +39,7 @@ const NoteboardLink = ({noteboard, isActive}) => {
           }} 
           isDark={true} 
           iconName="majesticons:trash-line"
-          />
+          /> */
         }
       </div>
   )
