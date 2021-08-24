@@ -1,0 +1,11 @@
+{
+  "circle-speedDivider": 5,
+  "circle-speedFrictionTreshold": 2,
+  "circle-friction": 0.05,
+  "circle-colors": [
+    "#FFFFFF", "#E7E7E7", "#DEDEDE", "#BFBFBF"
+  ],
+  "notes-colors": [
+    "#232323", "#28536B", "#26A96C", "#de8540", "#407fde", "#d4195e", "#409147", "#F07272", "#9E85B1", "#e32222", "#541c80"
+  ]
+}

@@ -41,6 +41,10 @@ body{
   font-weight: bold;
 }
 
+.content{
+  z-index: 1;
+}
+
 .NavLink{
   &:hover{
     color: $primary;
