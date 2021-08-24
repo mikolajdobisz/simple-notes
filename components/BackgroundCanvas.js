@@ -36,9 +36,9 @@ const BackgroundCanvas = () => {
     let circles = []
     const circleColors = settings['circle-colors'];
     for(let i = 0; i < circleColors.length; i++){
-      let x = getRandomFloat(0, window.innerWidth, 3)
-      let y = getRandomFloat(0, window.innerHeight, 3)
-      let r = getRandomInt(0, window.innerWidth / 2)
+      let x = getRandomFloat(0, window.innerWidth, 3);
+      let y = getRandomFloat(0, window.innerHeight, 3);
+      let r = getRandomInt(window.innerWidth / 3, window.innerWidth / 2) / (i * i + 1);
       let color = circleColors[i];
       let vel = new Vector2(getRandomFloat(-1, 1, 3), getRandomFloat(-1, 1, 3))
       circles[i] = new Circle(x, y, r, color, vel)

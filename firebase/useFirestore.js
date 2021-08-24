@@ -25,8 +25,33 @@ const useFirestore = (userInfo) => {
     })
   })
 
-  const deleteNoteboard = id => {
-    console.log("Noteboard deletion function: " + id)
+  const deleteNoteboard = noteboardID => {
+    const batch = db.batch();
+    const notesRef = db.collection('noteboards').doc(noteboardID).collection('notes');
+    notesRef.get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        //console.log(doc.ref);
+        batch.delete(doc.ref);
+      })
+      batch.commit()
+      .then(() => {
+        const noteboardRef = db.collection('noteboards').doc(noteboardID);
+        noteboardRef.delete()
+        .then(() => {
+          console.log(`Success! Noteboard ${noteboardID} deleted.`);
+        })
+        .catch(err => {
+          console.error(err);
+        })
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    })
+    .catch(err => {
+      console.error(err);
+    })
   }
 
   const addNote = (noteboardID) => new Promise((resolve, reject) => {
