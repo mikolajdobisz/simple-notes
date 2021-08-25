@@ -10,7 +10,8 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
   const [newNoteboardName, setNewNoteboardName] = useState("");
   const firestoreCtx = useFirestoreContext();
 
-  const addHandler = () => {
+  const addHandler = e => {
+    e.preventDefault();
     if(newNoteboardName == ""){
       console.error("Noteboard name is empty!");
       return;
@@ -18,6 +19,7 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
     firestoreCtx.addNoteboard(newNoteboardName)
     .then(docRef => {
       console.log("Success! New noteboard added in database!");
+      setNewNoteboardName("");
       docRef.get().then(doc => {
         console.log({id: doc.id, data: doc.data()});
       }).catch(err => {
@@ -40,16 +42,18 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
         <div className={"headline " + styles.noteboardsHeadline}>
           Noteboards
         </div>
-        <div className={styles.controlPanel}>
-          <input 
-            value={newNoteboardName} 
-            type="text" 
-            onInput={e => {setNewNoteboardName(e.target.value)}}
-            placeholder="Noteboard Name"
-          />
-          <RoundButton onClick={addHandler} iconName="majesticons:plus-line"/>
-          {/* <RoundButton iconName="majesticons:trash-line"/> */}
-        </div>
+        <form onSubmit={addHandler}>
+          <div className={styles.controlPanel}>
+            <input 
+              value={newNoteboardName} 
+              type="text" 
+              onInput={e => {setNewNoteboardName(e.target.value)}}
+              placeholder="Noteboard Name"
+            />
+            <RoundButton iconName="majesticons:plus-line"/>
+            {/* <RoundButton iconName="majesticons:trash-line"/> */}
+          </div>
+        </form>
         <div className={styles.noteboardsList}>
           {noteboardLinks}
         </div>

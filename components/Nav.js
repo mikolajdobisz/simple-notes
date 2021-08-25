@@ -21,10 +21,10 @@ const Nav = () => {
         !authCtx.userInfo ? (
           <div className={styles.signedOutPanel}>
             <Link href="/register">
-              <button className="primary">Register</button>
+              <button className="button primary">Register</button>
             </Link>
             <Link href="/signin">
-              <button className="alternate">Sign In</button>
+              <button className="button alternate">Sign In</button>
             </Link>
           </div>
         ) : (
@@ -32,7 +32,7 @@ const Nav = () => {
             <span>
               Hello there, <b>{authCtx.userInfo.displayName}</b>
             </span>
-            <button className="alternate" onClick={authCtx.signOut}>Sign Out</button>
+            <button className="button alternate" onClick={authCtx.signOut}>Sign Out</button>
           </div>
         )
       }

@@ -6,18 +6,18 @@ const NavLink = ({text, link, regex}) => {
   const {asPath} = useRouter();
   const [classList, setClassList] = useState(['NavLink']);
 
-  useEffect(() => {
+  const getLinkClasses = () => {
+    let classString = "NavLink ";
     if(regex){
       const test = regex.test(asPath);
-      const newClassList = ['NavLink'];
-      if(test) newClassList.push('active');
-      if(newClassList !== classList) setClassList(newClassList);
+      if(test) classString = classString + "active";
     }
-  }, [regex, asPath])
+    return classString;
+  }
 
   return (
     <Link href={link}>
-      <a className={classList.join(' ')}>{text}</a>
+      <a className={getLinkClasses()}>{text}</a>
     </Link>
   )
 }

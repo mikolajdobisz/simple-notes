@@ -9,8 +9,14 @@ const Notes = ({noteboardID}) => {
 
   const firestoreCtx = useFirestoreContext();
   const {userInfo} = useFirebaseAuth();
-
+  const [updatesList, setUpdatesList] = useState([]);
   const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    if(updatesList.length > 0){
+      notesUpdated(updatesList);
+    }
+  }, [updatesList]);
 
   useEffect(() => {
     const {db} = firestoreCtx;
@@ -19,32 +25,53 @@ const Notes = ({noteboardID}) => {
       console.log("Setting up notes listener for noteboard ", noteboardID);
       unsubscribe = db.collection("noteboards").doc(noteboardID).collection("notes")
       .onSnapshot(querySnapshot => {
-        let notesList = [];
-        querySnapshot.forEach(doc => {
-          notesList.push({
-            id: doc.id,
-            data: doc.data()
-          })
-        })
-        setNotes(notesList);
+        setUpdatesList(querySnapshot.docChanges());
       })
     }
     return () => {
       if(unsubscribe){
         console.log("Removing notes listener for noteboard ", noteboardID);
+        setNotes([]);
         unsubscribe();
       }
     }
   }, [firestoreCtx.db, userInfo, noteboardID])
 
+  //handle doc changes received from firestore 'onSnapshot' subscription
+  const notesUpdated = (changes) => {
+    let notesCopy = [...notes];
+    changes.forEach(change => {
+      switch(change.type) {
+        case "added":
+          const existingNote = notesCopy.find(oldNote => oldNote.id === change.doc.id);
+          if(!existingNote){
+            notesCopy.push({
+              id: change.doc.id,
+              data: change.doc.data()
+            })
+          }
+          break;
+        case "removed":
+          notesCopy = notesCopy.filter(oldNote => oldNote.id !== change.doc.id)
+          break;
+        case "modified":
+          const modifiedNote = notesCopy.find(oldNote => oldNote.id === change.doc.id);
+          modifiedNote.id = change.doc.id;
+          modifiedNote.data = change.doc.data();
+          break;
+      }
+    })
+    setNotes(notesCopy);
+    setUpdatesList([]);
+  }
+
   const addHandler = () => {
-    console.log("XD");
     firestoreCtx.addNote(noteboardID)
     .then(docRef => {
-      console.log(`Success! Note added to noteboard: ${noteboardID}`);
+      //console.log(`Success! Note added to noteboard: ${noteboardID}`);
       docRef.get()
       .then(doc => {
-        console.log({id: doc.id, data: doc.data()});
+        //console.log({id: doc.id, data: doc.data()});
       })
       .catch(err => {
         console.error(err);
@@ -54,16 +81,16 @@ const Notes = ({noteboardID}) => {
       console.error(err);
     })
   }
-
-  const notesElements = notes.map(note => 
-  <Note key={note.id} note={note} noteboardID={noteboardID}/>
-  )
   
   return (
     <>
       <div className={styles.NotesContainer}>
         <div className={styles.Notes}>
-          {notesElements}
+          {
+            notes.map(note => 
+              <Note key={note.id} note={note} noteboardID={noteboardID}/>
+            )
+          }
         </div>
       </div>
       <div className={styles.NotesControls}>

@@ -21,7 +21,7 @@ label{
 }
 
 //buttons
-button{ 
+.button{ 
   cursor: pointer;
   padding: 0.75em 1.5em;
   border: none;
@@ -38,7 +38,7 @@ button{
   }
 }
 
-button.primary{
+.button.primary{
   background-color: $primary;
   color: $main-1;
 
@@ -51,7 +51,7 @@ button.primary{
   }
 }
 
-button.alternate{
+.button.alternate{
   $border-thickness: 1px;
 
   background-color: $main-1;
@@ -69,6 +69,19 @@ button.alternate{
     $c: lighten($primary, $amount: 10%);
     background-color: $c;
     border: $border-thickness solid $c;
+  }
+}
+
+.button.danger{
+  background-color: $danger;
+  color: $main-1;
+
+  &:hover{
+    background-color: darken($danger, $amount: 20%);
+  }
+
+  &:active{
+    background-color: lighten($danger, $amount: 10%);
   }
 }
 

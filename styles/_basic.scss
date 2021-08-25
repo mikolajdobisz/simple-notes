@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+div{
+  position: relative;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -17,4 +21,9 @@ ul{
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+button{
+  outline: none;
+  border: none;
 }

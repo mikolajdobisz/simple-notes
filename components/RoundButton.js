@@ -7,9 +7,9 @@ const RoundButton = ({iconName, onClick, isAlternate}) => {
   if(isAlternate) classList.push(styles.alternate);
 
   return (
-    <div onClick={onClick} className={classList.join(' ')}>
+    <button onClick={onClick} className={classList.join(' ')}>
       <Icon className={styles.icon} icon={iconName} />
-    </div>
+    </button>
   )
 }
 

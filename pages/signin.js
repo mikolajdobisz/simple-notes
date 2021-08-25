@@ -49,7 +49,7 @@ const Signin = () => {
                 </div>
               </div>
               <div>
-                <button className="primary">Submit</button>
+                <button className="button primary">Submit</button>
               </div>
               <div>
                 Don&apos;t have an account? <Link href="/register"><a className="link">Register</a></Link>
