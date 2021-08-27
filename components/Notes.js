@@ -37,6 +37,17 @@ const Notes = ({noteboardID}) => {
     }
   }, [firestoreCtx.db, userInfo, noteboardID])
 
+  //sort notes array based on creationTime
+  const sortNotes = notesList => {
+    notesList.sort((a, b) => {
+      const aVal = a.data.creationTime.valueOf();
+      const bVal = b.data.creationTime.valueOf();
+      if(aVal > bVal) return 1;
+      if(aVal < bVal) return -1;
+      return 0;
+    })
+  }
+
   //handle doc changes received from firestore 'onSnapshot' subscription
   const notesUpdated = (changes) => {
     let notesCopy = [...notes];
@@ -66,6 +77,7 @@ const Notes = ({noteboardID}) => {
           break;
       }
     })
+    sortNotes(notesCopy);
     setNotes(notesCopy);
     setUpdatesList([]);
   }
@@ -86,27 +98,16 @@ const Notes = ({noteboardID}) => {
       console.error(err);
     })
   }
-  
-  const mapNotes = () => {
-    if(notes.length == 0) return [];
-    const sortedNotes = [...notes];
-    sortedNotes.sort((a, b) => {
-      const aVal = a.data.creationTime.valueOf();
-      const bVal = b.data.creationTime.valueOf();
-      if(aVal > bVal) return 1;
-      if(aVal < bVal) return -1;
-      return 0;
-    })
-    return sortedNotes.map(note => 
-      <Note key={note.id} note={note} noteboardID={noteboardID}/>
-    )
-  }
 
   return (
     <>
       <div className={styles.NotesContainer}>
         <div className={styles.Notes}>
-          {mapNotes()}
+          {
+            notes.map(note => 
+              <Note key={note.id} note={note} noteboardID={noteboardID}/>
+            )
+          }
         </div>
       </div>
       <div className={styles.NotesControls}>

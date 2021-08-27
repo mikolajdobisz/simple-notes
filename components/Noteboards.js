@@ -16,6 +16,16 @@ const Noteboards = () => {
 
   const [noteboards, setNoteboards] = useState([]);
 
+  const sortNoteboards = noteboardsList => {
+    noteboardsList.sort((a, b) => {
+      const aVal = a.data.creationTime.valueOf();
+      const bVal = b.data.creationTime.valueOf();
+      if(aVal > bVal) return 1;
+      if(aVal < bVal) return -1;
+      return 0;
+    })
+  }
+
   useEffect(() => {
     const {db} = firestoreCtx;
     let unsubscribe;
@@ -30,6 +40,7 @@ const Noteboards = () => {
             data: doc.data()
           })
         })
+        sortNoteboards(noteboardsList);
         setNoteboards(noteboardsList);
       })
     }
