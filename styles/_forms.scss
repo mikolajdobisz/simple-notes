@@ -5,7 +5,7 @@ input, button, textarea{
 }
 
 input{
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 100px;
   border: 1px solid $darken-2;
   outline: none;
@@ -14,6 +14,14 @@ input{
     border-color: $primary;
     color: $primary-dark;
   }
+
+  &::placeholder{
+    opacity: 1;
+  }
+}
+
+textare::placeholder{
+  opacity: 1;
 }
 
 label{

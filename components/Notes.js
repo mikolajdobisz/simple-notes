@@ -55,9 +55,14 @@ const Notes = ({noteboardID}) => {
           notesCopy = notesCopy.filter(oldNote => oldNote.id !== change.doc.id)
           break;
         case "modified":
-          const modifiedNote = notesCopy.find(oldNote => oldNote.id === change.doc.id);
-          modifiedNote.id = change.doc.id;
-          modifiedNote.data = change.doc.data();
+          console.log('note modified');
+          const modifiedNoteIndex = notesCopy.findIndex(oldNote => oldNote.id === change.doc.id);
+          if(modifiedNoteIndex >= 0){
+            notesCopy[modifiedNoteIndex] = {
+              id: change.doc.id,
+              data: change.doc.data()
+            }
+          }
           break;
       }
     })
@@ -82,15 +87,26 @@ const Notes = ({noteboardID}) => {
     })
   }
   
+  const mapNotes = () => {
+    if(notes.length == 0) return [];
+    const sortedNotes = [...notes];
+    sortedNotes.sort((a, b) => {
+      const aVal = a.data.creationTime.valueOf();
+      const bVal = b.data.creationTime.valueOf();
+      if(aVal > bVal) return 1;
+      if(aVal < bVal) return -1;
+      return 0;
+    })
+    return sortedNotes.map(note => 
+      <Note key={note.id} note={note} noteboardID={noteboardID}/>
+    )
+  }
+
   return (
     <>
       <div className={styles.NotesContainer}>
         <div className={styles.Notes}>
-          {
-            notes.map(note => 
-              <Note key={note.id} note={note} noteboardID={noteboardID}/>
-            )
-          }
+          {mapNotes()}
         </div>
       </div>
       <div className={styles.NotesControls}>

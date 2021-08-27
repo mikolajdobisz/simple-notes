@@ -31,10 +31,25 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
     })
   }
 
-  const noteboardLinks = noteboards.map(el => {
-    let isActive = noteboardID && noteboardID == el.id;
-    return <NoteboardLink key={el.id} noteboard={el} isActive={isActive}/>
-  })
+  const mapNoteboards = () => {
+    if(noteboards.length > 0){
+      const sortedNoteboards = [...noteboards];
+      sortedNoteboards.sort((a, b) => {
+        const aVal = a.data.creationTime.valueOf();
+        const bVal = b.data.creationTime.valueOf();
+        if(aVal > bVal) return 1;
+        if(aVal < bVal) return -1;
+        return 0;
+      })
+      return sortedNoteboards.map(el => {
+        let isActive = noteboardID && noteboardID == el.id;
+        return <NoteboardLink key={el.id} noteboard={el} isActive={isActive}/>
+      })
+    }
+    else{
+      return [];
+    }
+  }
 
   return (
     <div className={styles.NoteboardsListContainer}>
@@ -55,7 +70,7 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
           </div>
         </form>
         <div className={styles.noteboardsList}>
-          {noteboardLinks}
+          {mapNoteboards()}
         </div>
       </div>
     </div>

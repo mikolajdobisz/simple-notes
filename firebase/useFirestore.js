@@ -17,6 +17,7 @@ const useFirestore = (userInfo) => {
     noteboardsRef.add({
       uid: userInfo.uid,
       name: name,
+      creationTime: firebase.firestore.Timestamp.now()
     }).then(docRef => {
       resolve(docRef);
     })
@@ -60,7 +61,8 @@ const useFirestore = (userInfo) => {
     const noteboardRef = db.collection("noteboards")
     .doc(noteboardID).collection("notes").add({
       title: "",
-      text: ""
+      text: "",
+      creationTime: firebase.firestore.Timestamp.now()
     })
     .then(docRef => {
       resolve(docRef);
