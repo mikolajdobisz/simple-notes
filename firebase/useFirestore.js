@@ -55,6 +55,26 @@ const useFirestore = (userInfo) => {
     })
   }
 
+  const updateNoteboard = (noteboardID, name) => {
+    if(!userInfo){ 
+      console.error("No user signed in!");
+      return;
+    }
+    if(noteboardID && name){
+      db.collection("noteboards")
+      .doc(noteboardID)
+      .update({
+        name: name
+      })
+      .then(() => {
+        console.log(`Success! Noteboard ${noteboardID} updated.`);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+    }
+  }
+
   const addNote = (noteboardID) => new Promise((resolve, reject) => {
     if(!userInfo) reject("No user signed in!");
     if(!noteboardID) reject("No noteboardID given!");
@@ -73,14 +93,17 @@ const useFirestore = (userInfo) => {
   })
 
   const updateNote = (noteboardID, noteID, data) => {
-    if(!userInfo) reject("No user signed in!");
+    if(!userInfo){ 
+      console.error("No user signed in!");
+      return;
+    }
     // console.log({
     //   noteboardID,
     //   noteID,
     //   data
     // });
     if(noteboardID && noteID && data){
-      const noteRef = db.collection("noteboards")
+      db.collection("noteboards")
       .doc(noteboardID).collection("notes")
       .doc(noteID).update({
         title: data.title,
@@ -112,6 +135,7 @@ const useFirestore = (userInfo) => {
     db,
     addNoteboard,
     deleteNoteboard,
+    updateNoteboard,
     addNote,
     updateNote,
     deleteNote

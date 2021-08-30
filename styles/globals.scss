@@ -10,6 +10,7 @@
 html{
   font-family: $font-primary, $fonts-basic;
   font-size: $font-size;
+  color: $contrast;
 }
 
 body{
@@ -38,6 +39,12 @@ body{
 
 .headline{
   font-size: 2rem;
+  color: $darken-3;
+  font-weight: bold;
+}
+
+.headline-2{
+  font-size: 1.5rem;
   color: $darken-3;
   font-weight: bold;
 }

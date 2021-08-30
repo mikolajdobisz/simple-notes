@@ -22,10 +22,15 @@
   }
 }
 
-.controlPanel{
+.addPanel{
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.controlsPanel{
+  display: flex;
+  gap: 0.5rem;
 }
 
 .noteboardsList{
@@ -35,4 +40,21 @@
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
+}
+
+.editionModal{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  .editionModalHeadline{
+    font-size: 1.2rem;
+    padding: 1rem 0 0.5rem 0;
+  }
+  
+  .editionModalButtons{
+    display: flex;
+    gap: 0.5rem;
+  }
 }

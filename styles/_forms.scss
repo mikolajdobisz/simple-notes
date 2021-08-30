@@ -46,6 +46,11 @@ label{
   }
 }
 
+.button:disabled{
+  background: $gray;
+  color: $darken-2;
+}
+
 .button.primary{
   background-color: $primary;
   color: $main-1;

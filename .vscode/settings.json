@@ -4,5 +4,10 @@
     "titleBar.activeBackground": "#2A063C",
     "titleBar.activeForeground": "#FCF9FE"
   },
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 15,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
 }

@@ -1,10 +1,11 @@
 .ConfirmModal{
+  padding-top: 1rem;
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
   max-width: 500px;
 
   .question{
-      font-size: 1rem;
+      font-size: 1.2rem;
       text-align: center;
   }
 

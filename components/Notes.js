@@ -5,7 +5,7 @@ import styles from '../styles/Notes.module.scss'
 import Note from './Note';
 import RoundButton from './RoundButton';
 
-const Notes = ({noteboardID}) => {
+const Notes = ({noteboard}) => {
 
   const firestoreCtx = useFirestoreContext();
   const {userInfo} = useFirebaseAuth();
@@ -21,21 +21,21 @@ const Notes = ({noteboardID}) => {
   useEffect(() => {
     const {db} = firestoreCtx;
     let unsubscribe;
-    if(db && userInfo && noteboardID){
-      console.log("Setting up notes listener for noteboard ", noteboardID);
-      unsubscribe = db.collection("noteboards").doc(noteboardID).collection("notes")
+    if(db && userInfo && noteboard){
+      console.log("Setting up notes listener for noteboard ", noteboard.id);
+      unsubscribe = db.collection("noteboards").doc(noteboard.id).collection("notes")
       .onSnapshot(querySnapshot => {
         setUpdatesList(querySnapshot.docChanges());
       })
     }
     return () => {
       if(unsubscribe){
-        console.log("Removing notes listener for noteboard ", noteboardID);
+        console.log("Removing notes listener for noteboard ", noteboard.id);
         setNotes([]);
         unsubscribe();
       }
     }
-  }, [firestoreCtx.db, userInfo, noteboardID])
+  }, [firestoreCtx.db, userInfo, noteboard])
 
   //sort notes array based on creationTime
   const sortNotes = notesList => {
@@ -83,9 +83,9 @@ const Notes = ({noteboardID}) => {
   }
 
   const addHandler = () => {
-    firestoreCtx.addNote(noteboardID)
+    firestoreCtx.addNote(noteboard.id)
     .then(docRef => {
-      //console.log(`Success! Note added to noteboard: ${noteboardID}`);
+      //console.log(`Success! Note added to noteboard: ${noteboard.id}`);
       docRef.get()
       .then(doc => {
         //console.log({id: doc.id, data: doc.data()});
@@ -105,7 +105,7 @@ const Notes = ({noteboardID}) => {
         <div className={styles.Notes}>
           {
             notes.map(note => 
-              <Note key={note.id} note={note} noteboardID={noteboardID}/>
+              <Note key={note.id} note={note} noteboard={noteboard}/>
             )
           }
         </div>

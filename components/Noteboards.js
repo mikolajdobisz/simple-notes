@@ -15,6 +15,7 @@ const Noteboards = () => {
   const {userInfo} = useAuthContext();
 
   const [noteboards, setNoteboards] = useState([]);
+  const [noteboard, setNoteboard] = useState(null);
 
   const sortNoteboards = noteboardsList => {
     noteboardsList.sort((a, b) => {
@@ -54,10 +55,24 @@ const Noteboards = () => {
     }
   }, [firestoreCtx.db, userInfo])
 
+  useEffect(() => {
+    if(noteboardID && noteboards && noteboards.length > 0){
+      const current = noteboards.find(el => el.id === noteboardID);
+      setNoteboard(current);
+    }
+    else{
+      setNoteboard(null);
+    }
+  }, [noteboardID, noteboards])
+
+  useEffect(() => {
+    console.log("noteboard updated");
+  }, [noteboard])
+
   return (
     <div className={styles.Noteboards}>
-      <NoteboardsList noteboardID={noteboardID} noteboards={noteboards}/>
-      <Notes noteboardID={noteboardID}/>
+      <NoteboardsList noteboard={noteboard} noteboards={noteboards}/>
+      <Notes noteboard={noteboard}/>
     </div>
   )
 }

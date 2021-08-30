@@ -6,6 +6,7 @@ const firestoreContext = createContext({
   db: null,
   addNoteboard: null,
   deleteNoteboard: null,
+  updateNoteboard: null,
   addNote: null,
   updateNote: null,
   deleteNote: null,

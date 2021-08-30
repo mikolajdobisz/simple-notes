@@ -5,10 +5,23 @@ import styles from '../styles/NoteboardsList.module.scss';
 import RoundButton from './RoundButton';
 import IconButton from './IconButton';
 import NoteboardLink from './NoteboardLink';
+import Modal from './Modal';
+import ConfirmModal from './ConfirmModal';
+import NoteboardControls from './NoteboardControls';
 
-const NoteboardsList = ({noteboards, noteboardID}) => {
+const NoteboardsList = ({noteboards, noteboard}) => {
   const [newNoteboardName, setNewNoteboardName] = useState("");
   const firestoreCtx = useFirestoreContext();
+
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [editedNoteboardName, setEditedNoteboardName] = useState("");
+  const [editionModal, setEditionModal] = useState(false);
+
+  const [currentNoteboard, setCurrentNoteboard] = useState("");
+  
+  useEffect(() => {
+    setEditedNoteboardName(currentNoteboard);
+  }, [currentNoteboard])
 
   const addHandler = e => {
     e.preventDefault();
@@ -31,26 +44,6 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
     })
   }
 
-  const mapNoteboards = () => {
-    if(noteboards.length > 0){
-      const sortedNoteboards = [...noteboards];
-      sortedNoteboards.sort((a, b) => {
-        const aVal = a.data.creationTime.valueOf();
-        const bVal = b.data.creationTime.valueOf();
-        if(aVal > bVal) return 1;
-        if(aVal < bVal) return -1;
-        return 0;
-      })
-      return sortedNoteboards.map(el => {
-        let isActive = noteboardID && noteboardID == el.id;
-        return <NoteboardLink key={el.id} noteboard={el} isActive={isActive}/>
-      })
-    }
-    else{
-      return [];
-    }
-  }
-
   return (
     <div className={styles.NoteboardsListContainer}>
       <div className={styles.NoteboardsList}>
@@ -58,7 +51,7 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
           Noteboards
         </div>
         <form onSubmit={addHandler}>
-          <div className={styles.controlPanel}>
+          <div className={styles.addPanel}>
             <input 
               value={newNoteboardName} 
               type="text" 
@@ -70,7 +63,13 @@ const NoteboardsList = ({noteboards, noteboardID}) => {
           </div>
         </form>
         <div className={styles.noteboardsList}>
-          {mapNoteboards()}
+          <NoteboardControls noteboard={noteboard}/>
+          {
+            noteboards.map(el => {
+              let isActive = noteboard && noteboard.id == el.id;
+              return <NoteboardLink key={el.id} noteboard={el} isActive={isActive}/>
+            })
+          }
         </div>
       </div>
     </div>

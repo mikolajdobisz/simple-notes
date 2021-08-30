@@ -4,7 +4,7 @@ import styles from '../styles/Note.module.scss';
 import IconButton from './IconButton';
 import TextareaAutosize from 'react-textarea-autosize';
 
-const Note = ({note, noteboardID}) => {
+const Note = ({note, noteboard}) => {
 
   const firestoreCtx = useFirestoreContext();
 
@@ -18,14 +18,14 @@ const Note = ({note, noteboardID}) => {
   }, [note])
 
   const saveHandle = () => {
-    firestoreCtx.updateNote(noteboardID, note.id, {
+    firestoreCtx.updateNote(noteboard.id, note.id, {
       title: title,
       text: text
     });
   }
 
   const deleteHandler = () => {
-    firestoreCtx.deleteNote(noteboardID, note.id);
+    firestoreCtx.deleteNote(noteboard.id, note.id);
   }
 
   const checkIfUnsaved = () => {
