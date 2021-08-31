@@ -15,6 +15,11 @@ const NoteboardControls = ({noteboard}) => {
   const [nameValue, setNameValue] = useState("");
   const [editionModal, setEditionModal] = useState(false);
 
+  const closeEditionModal = () => {
+    setEditionModal(false);
+    setNameValue(noteboard.data.name);
+  }
+
   const deleteHandler = () => {
     firestoreCtx.deleteNoteboard(noteboard.id);
     setConfirmModal(false);
@@ -51,9 +56,11 @@ const NoteboardControls = ({noteboard}) => {
           </span>
         </ConfirmModal>
       </Modal>
+      
+
       <Modal
       isOpen={editionModal}
-      setIsOpen={setEditionModal}
+      setIsOpen={closeEditionModal}
       >
         <div className={styles.editionModalContainer}>
           <form onSubmit={updateHandler}>
@@ -66,25 +73,30 @@ const NoteboardControls = ({noteboard}) => {
                 placeholder="Name"
               />
               <div className={styles.editionModalButtons}>
-                <button type="button" onClick={() => {setEditionModal(false)}} className="button alternate">Cancel</button>
+                <button type="button" onClick={closeEditionModal} className="button alternate">Cancel</button>
                 <button type="submit" className="button primary">Confirm</button>
               </div>
             </div>
           </form>
         </div>
       </Modal>
+
+
+
       <div className={styles.NoteboardControls}>
         <RoundButton 
         iconName="majesticons:trash-line"
         onClick={() => {setConfirmModal(true)}}
         isAlternate={true}
         isDisabled={noteboard === null}
+        title="Delete selected noteboard"
         />
         <RoundButton 
         iconName="majesticons:pencil-line"
         onClick={() => {setEditionModal(true)}}
         isAlternate={true}
         isDisabled={noteboard === null}
+        title="Edit selected noteboard"
         />
       </div>
     </>

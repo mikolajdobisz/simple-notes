@@ -58,7 +58,7 @@ const NoteboardsList = ({noteboards, noteboard}) => {
               onInput={e => {setNewNoteboardName(e.target.value)}}
               placeholder="Noteboard Name"
             />
-            <RoundButton iconName="majesticons:plus-line"/>
+            <RoundButton title="Add new noteboard" iconName="majesticons:plus-line"/>
             {/* <RoundButton iconName="majesticons:trash-line"/> */}
           </div>
         </form>

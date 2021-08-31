@@ -111,7 +111,7 @@ const Notes = ({noteboard}) => {
         </div>
       </div>
       <div className={styles.NotesControls}>
-        <RoundButton onClick={addHandler} iconName="majesticons:plus-line"/>
+        <RoundButton title="Add new note" onClick={addHandler} iconName="majesticons:plus-line"/>
       </div>
     </>
   )

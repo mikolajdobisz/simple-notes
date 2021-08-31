@@ -1,8 +1,14 @@
 @import './variables';
 
+.NoteContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .NoteContent{
   color: $main-1;
-  background: #bf4821;
+  background: #ad422d;
   border-radius: $border-radius;
   width: $Note-width;
   min-height: $Note-width;

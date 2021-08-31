@@ -82,6 +82,7 @@ const useFirestore = (userInfo) => {
     .doc(noteboardID).collection("notes").add({
       title: "",
       text: "",
+      color: "#ad422d",
       creationTime: firebase.firestore.Timestamp.now()
     })
     .then(docRef => {
@@ -97,17 +98,13 @@ const useFirestore = (userInfo) => {
       console.error("No user signed in!");
       return;
     }
-    // console.log({
-    //   noteboardID,
-    //   noteID,
-    //   data
-    // });
     if(noteboardID && noteID && data){
       db.collection("noteboards")
       .doc(noteboardID).collection("notes")
       .doc(noteID).update({
         title: data.title,
-        text: data.text
+        text: data.text,
+        color: data.color
       })
       .then(() => {
         console.log(`Success! Note ${noteID} updated.`);
