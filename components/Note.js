@@ -5,6 +5,7 @@ import IconButton from './IconButton';
 import TextareaAutosize from 'react-textarea-autosize';
 import { ColorPicker, toColor, useColor } from 'react-color-palette';
 import "react-color-palette/lib/css/styles.css";
+import Colors from '../scripts/Colors';
 
 const Note = ({note, noteboard}) => {
 
@@ -13,6 +14,7 @@ const Note = ({note, noteboard}) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [color, setColor] = useColor("hex","");
+  const [isTextDark, setIsTextDark] = useState(false);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   useEffect(() => {
@@ -21,6 +23,11 @@ const Note = ({note, noteboard}) => {
     setText(note.data.text);
     setColor(toColor("hex", note.data.color));
   }, [note])
+
+  useEffect(() => {
+    const newTextColor = Colors.getContrast(color.rgb) == 'black' ? true : false;
+    setIsTextDark(newTextColor);
+  }, [color]);
 
   const saveHandle = () => {
     firestoreCtx.updateNote(noteboard.id, note.id, {
@@ -39,6 +46,9 @@ const Note = ({note, noteboard}) => {
     return note.data.title !== title || note.data.text !== text || note.data.color !== color.hex;
   }
 
+  const NoteContentClassList = [styles.NoteContent];
+  if(isTextDark) NoteContentClassList.push(styles.darkText); 
+
   return (
     <div className={styles.NoteContainer}>
       {
@@ -48,22 +58,36 @@ const Note = ({note, noteboard}) => {
           onChange={setColor}
           height={160}
           width={260}
-          dark
+          dark={false}
           hideHSV
           hideRGB
         />
       }
-      <div style={{background: color.hex}} className={styles.NoteContent}>
+      <div style={{background: color.hex}} className={NoteContentClassList.join(" ")}>
         <div className={styles.nav}>
           <span className={styles.left}>
-            <IconButton onClick={() => {setIsPickerOpen(!isPickerOpen)}} title="Change color" iconName="bx:bxs-palette"/>
+            <IconButton 
+            onClick={() => {setIsPickerOpen(!isPickerOpen)}} 
+            title="Change color" 
+            iconName="bx:bxs-palette"
+            isDark={isTextDark}
+            />
           </span>
           <span className={styles.center}></span>
           <span className={styles.right}>
             {
-              checkIfUnsaved() && <IconButton title="Save" onClick={saveHandle} iconName="majesticons:check-line"/>
+              checkIfUnsaved() && <IconButton 
+                                    title="Save" onClick={saveHandle} 
+                                    iconName="majesticons:check-line"
+                                    isDark={isTextDark}
+                                  />
             }
-            <IconButton title="Delete" onClick={deleteHandler} iconName="majesticons:close-line"/>
+            <IconButton 
+            title="Delete" 
+            onClick={deleteHandler} 
+            iconName="majesticons:close-line"
+            isDark={isTextDark}
+            />
           </span>
         </div>
         <div className={styles.title}>

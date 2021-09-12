@@ -13,6 +13,16 @@
   width: $Note-width;
   min-height: $Note-width;
 
+  &.darkText{
+    color: $contrast;
+
+    .title, .text{
+      > textarea::placeholder{
+        color: $darken-3;
+      }
+    }
+  }
+
   .nav{
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -71,32 +81,32 @@
   }
 }
 
-.colorMenu{
-  width: $Note-width;
-  z-index: 10;
-  padding: 0.5rem;
-  border-radius: $border-radius;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: $main-1;
-}
+// .colorMenu{
+//   width: $Note-width;
+//   z-index: 10;
+//   padding: 0.5rem;
+//   border-radius: $border-radius;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   background-color: $main-1;
+// }
 
-.color{
-  width: 48px;
-  height: 48px;
-  border-radius: 100%;
-  margin: 0.2rem;
-  box-shadow: $shadow-1;
-  //transition: box-shadow 0.2s $transition-function, transform 0.05s $transition-function;
-  cursor: pointer;
+// .color{
+//   width: 48px;
+//   height: 48px;
+//   border-radius: 100%;
+//   margin: 0.2rem;
+//   box-shadow: $shadow-1;
+//   //transition: box-shadow 0.2s $transition-function, transform 0.05s $transition-function;
+//   cursor: pointer;
 
-  &:hover{
-    box-shadow: $shadow-2;
-  }
+//   &:hover{
+//     box-shadow: $shadow-2;
+//   }
 
-  &:active{
-    box-shadow: $shadow-3;
-    transform: scale(1.2);
-  }
-}
+//   &:active{
+//     box-shadow: $shadow-3;
+//     transform: scale(1.2);
+//   }
+// }
