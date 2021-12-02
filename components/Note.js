@@ -57,7 +57,7 @@ const Note = ({note, noteboard}) => {
           color={color}
           onChange={setColor}
           height={160}
-          width={260}
+          width={300}
           dark={false}
           hideHSV
           hideRGB
